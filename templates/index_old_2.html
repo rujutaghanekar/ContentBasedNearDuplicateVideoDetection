@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }}</title>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+</head>
+
+<body>
+    <h1>{{ title }}</h1>
+    <div id = '123'></div>
+    
+
+
+    <script type="text/javascript">
+    	var reqJson = JSON.parse('{{ reqJson | tojson | safe}}');
+    	var cnt = reqJson.cnt;
+    	var values = reqJson.values;
+    	var labels = reqJson.labels;
+    	var colors = reqJson.colors;
+    	console.log(values);
+		console.log(labels);
+		console.log(colors);
+    	
+    	function myFunc(){
+    		for (var i = 0; i < cnt; i++) {
+    			document.getElementById('123').innerHTML += '<canvas id="chart'+i+'" width="600" height="400"></canvas>';
+    			
+    		}
+
+    		for (var i = 0; i < cnt; i++) {
+    			makeChart(i);
+    		}
+    		
+    	}
+
+    	function makeChart(start){
+    		var dict = [];
+   //  		dict.push({
+   // 			 key:   "keyName",
+   //  		value: "the value"
+			// });
+    		for (x = 0+start*2; x < 2+start*2; x++) {
+    			dict.push({
+    				value:values[x],
+    				label:labels[x],
+    				color:colors[x]
+    			});
+    		} 
+
+    		console.log(dict);
+    		console.log("next");
+    		new Chart(document.getElementById("chart"+start).getContext("2d")).Pie(dict);
+    	}
+
+    	window.onload = myFunc;
+    	
+    </script>
+
+ <!--    <canvas id="chart" width="600" height="400"></canvas>
+    <script> -->
+     <!--  var pieData = [
+        {% for item, label, colors in set %}
+          {
+            value: {{item}},
+            label: "{{label}}",
+            color : "{{colors}}"
+          },
+        {% endfor %}
+      ];
+
+      // get bar chart canvas
+      //var mychart = document.getElementById("chart").getContext("2d");
+      //steps = 10
+     // max = {{ max }}
+
+      // draw pie chart
+      new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
+ -->
+    <!-- </script> -->
+</body>
+</html>

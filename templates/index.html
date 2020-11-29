@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{{url_for('static',filename='production/images/favicon.ico')}}" type="image/ico" />
+
+    <title>NDVDS!</title>
+
+    <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> -->
+    <!-- Bootstrap -->
+    <link href="{{url_for('static',filename='vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- Font Awesome -->
+    <link href="{{url_for('static',filename='vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- NProgress -->
+    <link href="{{url_for('static',filename='vendors/nprogress/nprogress.css')}}" rel="stylesheet" type="text/css">
+    <!-- iCheck -->
+    <link href="{{url_for('static',filename='vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet" type="text/css">
+  
+    <!-- bootstrap-progressbar -->
+    <link href="{{url_for('static',filename='vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- JQVMap -->
+    <link href="{{url_for('static',filename='vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{url_for('static',filename='vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Custom Theme Style -->
+
+
+  <span class="glyphicon glyphicon-ok"></span>.
+    <link href="{{url_for('static',filename='build/css/custom.min.css')}}" rel="stylesheet">
+
+
+
+   
+   
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-video-camera"></i> <span>NDVDS!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+           
+            
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('index')}}">Upload Video</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-home"></i>Query Video Details<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('displayResult')}}">Click Here</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-video-camera"></i> Detailed Analysis <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('detailedAnalysis')}}">Detailed Analysis </a></li>
+                    </ul>
+                  </li>
+                 </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            
+          </div>
+        </div>
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Video Name</span>
+              <div class="count" id="vidName"></div>
+              
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Length Of Video</span>
+              <div class="count" id="vidLen"></div>
+              
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Clusters</span>
+              <div class="count green" id="queryClusters"></div>
+              
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i>Videos Compared</span>
+              <div class="count" id="videosCompared"></div>
+              
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Frames</span>
+              <div class="count" id="totalFrames"></div>
+              
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i>FPS rate</span>
+              <div class="count">1 FPS</div>
+              
+            </div>
+          </div>
+          <!-- /top tiles -->
+
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Query Video</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <br />
+                  <div class="container">
+                    <div class="row"><
+                      <div class="col-sm-6">
+                        <h2>Video Name </h2>
+                          <div class="embed-responsive embed-responsive-16by9">
+                            <div id = "videoDisplay">
+                            
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="x_content">
+
+                    <div id="mainb" style="height:450px;"></div>
+
+                  </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <br />
+                </div>
+              </div>
+          </div>
+
+
+          <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Scatter Graph</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <div id="echart_scatter" style="height:500px;"></div>
+
+                  </div>
+                </div>
+              </div>
+        </div> -->
+        <!-- end page content -->
+          
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='vendors/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap -->
+    <script src="{{url_for('static',filename='vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{url_for('static',filename='vendors/fastclick/lib/fastclick.js')}}"></script>
+    <!-- NProgress -->
+    <script src="{{url_for('static',filename='vendors/nprogress/nprogress.js')}}"></script>
+    <!-- Chart.js -->
+    <script src="{{url_for('static',filename='vendors/Chart.js/dist/Chart.min.js')}}"></script>
+    <!-- gauge.js -->
+    <script src="{{url_for('static',filename='vendors/gauge.js/dist/gauge.min.js')}}"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{{url_for('static',filename='vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+    <!-- iCheck -->
+    <script src="{{url_for('static',filename='vendors/iCheck/icheck.min.js')}}"></script>
+    <!-- Skycons -->
+    <script src="{{url_for('static',filename='vendors/skycons/skycons.js')}}"></script>
+    <!-- Flot -->
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.time.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.stack.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.resize.js')}}"></script>
+    <!-- Flot plugins -->
+    <script src="{{url_for('static',filename='vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/flot.curvedlines/curvedLines.js')}}"></script>
+    <!-- DateJS -->
+    <script src="{{url_for('static',filename='vendors/DateJS/build/date.js')}}"></script>
+    <!-- JQVMap -->
+    <script src="{{url_for('static',filename='vendors/jqvmap/dist/jquery.vmap.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{url_for('static',filename='vendors/moment/min/moment.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{url_for('static',filename='build/js/custom.js')}}"></script>
+
+    <!-- ECharts -->
+    <script src="{{url_for('static',filename='vendors/echarts/dist/echarts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/echarts/map/js/world.js')}}"></script>
+
+    <script type="text/javascript">
+      
+    function startsome(){ 
+    var reqJson = JSON.parse('{{ reqJson | tojson | safe}}');
+    var reqJsonGraph = JSON.parse('{{ reqJsonGraph | safe}}');
+    init_graphData(reqJsonGraph);
+    initializeStaticBlocks(reqJson); 
+    
+    
+
+     
+  }
+
+  function init_graphData(reqJsonGraph){
+    var qc = {{queryClusters}};
+    var vc = {{videosCompared}};
+    var s,d;
+    dbVidNames = [];
+    dbVidSimilarity=[];
+    dbVidDisSimilarity=[];
+    for (var i = 0; i < qc*vc; i+=qc) {
+      dbVidNames.push(reqJsonGraph.videoName[i]);
+      s=0;
+      d=0;
+      for (var j = 0; j < qc; j++) {
+        if(reqJsonGraph.Label[i+j] == "Similar"){
+          s+=reqJsonGraph.Contribution[i+j];
+        }
+        else
+          d+=reqJsonGraph.Contribution[i+j];
+      }
+      dbVidSimilarity.push(s);
+      dbVidDisSimilarity.push(d);
+
+    }
+    
+    init_BarChartData(dbVidNames,dbVidSimilarity,dbVidDisSimilarity);
+
+  }
+
+
+   function initializeStaticBlocks(reqJson){
+    var vidName = reqJson.vidName;
+    document.getElementById('vidName').innerHTML = vidName.substring(0,vidName.length-4);
+    document.getElementById('videoDisplay').innerHTML = '<iframe class="embed-responsive-item" src="/static/uploads/'+vidName+'"></iframe>';
+    var queryClusters = reqJson.queryClusters;
+    document.getElementById('queryClusters').innerHTML = queryClusters;
+    var duration = reqJson.duration;
+    document.getElementById('vidLen').innerHTML = duration.toFixed(2);
+    var videosCompared = reqJson.videosCompared;
+    document.getElementById('videosCompared').innerHTML = videosCompared;
+    var totalFrames = reqJson.totalFrames;
+    document.getElementById('totalFrames').innerHTML = totalFrames;
+   
+   }
+
+    
+  
+  window.onload = startsome();
+
+    </script>
+  
+  </body>
+</html>

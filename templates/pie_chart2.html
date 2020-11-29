@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }}</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+</head>
+
+<body>
+    <h1>{{ title }}</h1>
+
+    <canvas id="chart" width="600" height="400"></canvas>
+    <script>
+	function myfunc()
+	{
+		
+	var pieData = [
+        {% for i in range(index,index+1) %}
+			{
+					value: {{values[i]}},
+					label: {{labels[i]}},
+					color : {{colors[i]}}
+			},
+					
+		{% endfor %}
+      ];
+      // get bar chart canvas
+	  //var para = document.createElement("canvas");
+	  //document.getElementById("chart").id = 'id_new'+i.toString();
+      //var mychart = document.getElementById("chart").getContext("2d");
+      //steps = 10
+      //max = {{ max }}
+      // draw pie chart
+	  //document.getElementById("chart").id = 'id_new'+i.toString();
+      new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
+	  
+	}
+	for(i=0;i<1;i++)
+	{
+		myfunc();
+		{% set index = index + 2 %}
+	}
+    </script>
+</body>
+</html>

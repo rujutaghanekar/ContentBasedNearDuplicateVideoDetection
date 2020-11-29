@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="{{url_for('static',filename='production/images/favicon.ico')}}" type="image/ico" />
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> -->
+    <!-- Bootstrap -->
+    <link href="{{url_for('static',filename='vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- Font Awesome -->
+    <link href="{{url_for('static',filename='vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- NProgress -->
+    <link href="{{url_for('static',filename='vendors/nprogress/nprogress.css')}}" rel="stylesheet" type="text/css">
+    <!-- iCheck -->
+    <link href="{{url_for('static',filename='vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet" type="text/css">
+	
+    <!-- bootstrap-progressbar -->
+    <link href="{{url_for('static',filename='vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- JQVMap -->
+    <link href="{{url_for('static',filename='vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{url_for('static',filename='vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Custom Theme Style -->
+
+
+	<span class="glyphicon glyphicon-ok"></span>.
+    <link href="{{url_for('static',filename='build/css/custom.min.css')}}" rel="stylesheet">
+
+
+
+   
+   
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+           
+            
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href="index2.html">Dashboard2</a></li>
+                      <li><a href="index3.html">Dashboard3</a></li>
+                    </ul>
+                  </li>
+                  
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+         <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+             </nav>
+          </div>
+        </div>
+        <!-- end top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
+              <div class="count">2500</div>
+              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
+              <div class="count">123.50</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
+              <div class="count green">2,500</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
+              <div class="count">4,567</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
+              <div class="count">2,315</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
+              <div class="count">7,325</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div>
+          </div>
+          <!-- /top tiles -->
+
+
+          <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title">
+                  <h2>Device Usage</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table class="" style="width:100%">
+                    <tr>
+                      <th style="width:37%;">
+                        <p>Top 5</p>
+                      </th>
+                      <th>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                          <p class="">Device</p>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                          <p class="">Progress</p>
+                        </div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>
+						<div id='123'></div>
+                        
+                      </td>
+                      <td>
+                        <table class="tile_info">
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square blue"></i>IOS </p>
+                            </td>
+                            <td>30%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square green"></i>Android </p>
+                            </td>
+                            <td>10%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square purple"></i>Blackberry </p>
+                            </td>
+                            <td>20%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square aero"></i>Symbian </p>
+                            </td>
+                            <td>15%</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p><i class="fa fa-square red"></i>Others </p>
+                            </td>
+                            <td>30%</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <!-- end page content -->
+          
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='vendors/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap -->
+    <script src="{{url_for('static',filename='vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{url_for('static',filename='vendors/fastclick/lib/fastclick.js')}}"></script>
+    <!-- NProgress -->
+    <script src="{{url_for('static',filename='vendors/nprogress/nprogress.js')}}"></script>
+    <!-- Chart.js -->
+    <script src="{{url_for('static',filename='vendors/Chart.js/dist/Chart.min.js')}}"></script>
+    <!-- gauge.js -->
+    <script src="{{url_for('static',filename='vendors/gauge.js/dist/gauge.min.js')}}"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{{url_for('static',filename='vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+    <!-- iCheck -->
+    <script src="{{url_for('static',filename='vendors/iCheck/icheck.min.js')}}"></script>
+    <!-- Skycons -->
+    <script src="{{url_for('static',filename='vendors/skycons/skycons.js')}}"></script>
+    <!-- Flot -->
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.time.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.stack.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/Flot/jquery.flot.resize.js')}}"></script>
+    <!-- Flot plugins -->
+    <script src="{{url_for('static',filename='vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/flot.curvedlines/curvedLines.js')}}"></script>
+    <!-- DateJS -->
+    <script src="{{url_for('static',filename='vendors/DateJS/build/date.js')}}"></script>
+    <!-- JQVMap -->
+    <script src="{{url_for('static',filename='vendors/jqvmap/dist/jquery.vmap.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{url_for('static',filename='vendors/moment/min/moment.min.js')}}"></script>
+    <script src="{{url_for('static',filename='vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{url_for('static',filename='build/js/custom.js')}}"></script>
+
+    <script type="text/javascript">
+    	
+		function startsome(){	
+		var reqJson = JSON.parse('{{ reqJson | tojson | safe}}');
+		console.log(reqJson.values)
+		for (var i = 0; i < reqJson.cnt; i++) {
+    		document.getElementById('123').innerHTML += '<canvas class="canvasDoughnut" id="chart'+i+'" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>';
+			init_allChartData(reqJson,i)
+		}
+		
+				
+		init_sparklines();
+		init_flot_chart();
+		init_sidebar();
+		init_wysiwyg();
+		init_InputMask();
+		init_JQVmap();
+		init_cropper();
+		init_knob();
+		init_IonRangeSlider();
+		init_ColorPicker();
+		init_TagsInput();
+		init_parsley();
+		init_daterangepicker();
+		init_daterangepicker_right();
+		init_daterangepicker_single_call();
+		init_daterangepicker_reservation();
+		init_SmartWizard();
+		init_EasyPieChart();
+		init_charts();
+		init_echarts();
+		init_morris_charts();
+		init_skycons();
+		init_select2();
+		init_validator();
+		init_DataTables();
+		
+		init_gauge();
+		init_PNotify();
+		init_starrr();
+		init_calendar();
+		init_compose();
+		init_CustomNotification();
+		init_autosize();
+		init_autocomplete();
+				
+	}
+	
+	window.onload = startsome();
+
+    </script>
+	
+  </body>
+</html>

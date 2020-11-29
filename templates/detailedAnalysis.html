@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>NDVDS!  </title>
+
+    <!-- Bootstrap -->
+    <link href="{{url_for('static',filename='vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{url_for('static',filename='vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{url_for('static',filename='vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <!-- Dropzone.js -->
+    <link href="{{url_for('static',filename='vendors/dropzone/dist/min/dropzone.min.css')}}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{url_for('static',filename='build/css/custom.min.css')}}" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-video-camera"></i> <span>NDVDS!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            
+
+            <br />
+            
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('index')}}">Upload Video</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-home"></i>Query Video Details<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('displayResult')}}">Click Here</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-video-camera"></i> Detailed Analysis <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('detailedAnalysis')}}">Detailed Analysis </a></li>
+                    </ul>
+                  </li>
+                 </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            
+          </div>
+        </div>
+
+        <!-- page content -->
+
+        <div class="right_col" role="main">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><b>Query Video Keyframes</b></h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <div class="row">
+
+                      <p>Keyframes are chosen after averaging the features of each frame from the cluster.</p>
+
+                      <div id="thumbPrints"></div>
+                   
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="videoTiles">
+          
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='vendors/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap -->
+    <script src="{{url_for('static',filename='vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{url_for('static',filename='vendors/fastclick/lib/fastclick.js')}}"></script>
+    <!-- NProgress -->
+    <script src="{{url_for('static',filename='vendors/nprogress/nprogress.js')}}"></script>
+    <!-- Dropzone.js -->
+    <script src="{{url_for('static',filename='vendors/dropzone/dist/min/dropzone.min.js')}}"></script>
+    <!-- Chart.js -->
+    <script src="{{url_for('static',filename='vendors/Chart.js/dist/Chart.min.js')}}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{url_for('static',filename='build/js/custom.js')}}"></script>
+    <script type="text/javascript">
+    
+    function startsome(){ 
+    var reqJson = JSON.parse('{{ reqJson | safe}}');
+    var queryClusters = {{queryClusters}};
+    var videosCompared = {{videosCompared}};
+    var color = {{color | safe}};
+    init_queryImages(reqJson,queryClusters,videosCompared,color);
+    init_Html(reqJson,queryClusters,videosCompared,color);
+    init_data(reqJson,queryClusters,videosCompared,color);
+    
+    // init_DoughnutChartData(reqJson); 
+    // init_data(reqJson);
+    // initializeStaticBlocks(reqJson);  
+  }
+  
+  function init_queryImages(reqJson,qc,vc,color){
+    makeHtml ='';
+    for (var i = 0; i < qc; i++) {
+      makeHtml += '<div class="col-md-55"><div class="thumbnail"><div class="image view view-first"><img style="width: 100%; display: block;" src="/static/VideoThumbPrints/'+reqJson.ClusterPairImage[i][0]+'" alt="image" /></div><div class="caption"><p>Cluster Number '+reqJson.ClusterPairNumeric[i][0]+'</p></div> </div></div>';
+    }
+    document.getElementById('thumbPrints').innerHTML = makeHtml;
+  }
+
+  
+  function init_Html(reqJson,qc,vc,color){
+    init_queryImages(reqJson,qc,vc,color);
+    chartCnt=0;
+    for(var i=0;i<qc*vc;i+=qc){
+      var mainHtml = 
+                        '<div class="x_panel tile fixed_height_320 overflow_hidden">'+
+                          '<div class="x_title">';
+      var keyHtml = '';
+      var dbthumbNails='';
+      var resHtml='';
+      for(var j=0;j<qc;j++){
+        keyHtml += '<tr>'+
+                     '<td><p><i class="fa fa-square" style="color:'+color[j]+'"></i>'+reqJson.ClusterPairNumeric[i+j]+'</p></td>'+
+                   '</tr>';
+        resHtml += '<tr>'+
+                     '<td><p><i class="fa fa-square" style="color:'+color[j]+'"></i>'+reqJson.Label[i+j]+'</p></td>'+
+                   '</tr>';
+        dbthumbNails +='<div class="col-md-55"><img style="width: 100%; display: block;" src="static/VideoThumbPrints/'+reqJson.ClusterPairImage[i+j][1]+'" alt="image" /></div>';
+      }
+      mainHtml += '<h2><b>Database Video ID : '+reqJson.videoName[i]+'</b></h2>'+
+                    '<div class="clearfix"></div>'+
+                  '</div>'+
+                  '<div class="x_content">'+
+                  '<div class="col-xs-12 col-md-5 col-lg-5">'+
+                    '<table class="" style="width:100%">'+
+                      '<tr>'+
+                        '<th style="width:45%;">'+
+                          '<p>Pie Chart</p>'+
+                        '</th>'+
+                        '<th style="width:25%;">'+
+                          '<div>'+
+                            '<p class="">Cluster Pairs</p>'+
+                          '</div>'+
+                        '</th>'+
+                        '<th style="width:25%;">'+
+                          '<div class="col-lg-12 col-md-12 col-sm-3 col-xs-3">'+
+                            '<p class="">Result</p>'+
+                          '</div>'+
+                        '</th>'+
+                      '</tr>'+
+                      '<tr>'+
+                      '<td>'+
+                        '<canvas id = "doughChart'+chartCnt+'" class="canvasDoughnut" height="180" width="180" style="margin: 15px 10px 10px 0"></canvas>'+
+                      '</td>'+
+                      '<td>'+
+                        '<table class="tile_info">'+keyHtml+
+                        '</table>'+
+                      '</td>'+
+                      '<td>'+
+                        '<table class="tile_info">'+resHtml+
+                        '</table>'+
+                      '</td>'+
+                      '</tr>'+
+                    '</table>'+
+                  '</div>'+
+                  '<div class="col-xs-12 col-md-7 col-lg-7"><h5><b>Database Video Keyframes</b><h5><br><br>'+dbthumbNails+          
+                  '</div>'+
+                '</div>'+
+              '</div>';
+      document.getElementById('videoTiles').innerHTML += mainHtml;
+      chartCnt += 1;
+    }
+
+  }
+
+
+
+
+
+    function init_data(reqJson,qc,vc,color){
+      var pieData=[];
+      var labelData=[];
+      clusterPair = [];
+      
+      for(var i=0;i<qc*vc;i+=qc){
+        var indiPie = [];
+        var indieLabel=[];
+        var indieClusterPair=[];
+        for (var j = 0; j < qc; j++) {
+          indiPie.push(reqJson.Contribution[i+j]);
+          l = reqJson.Label[i+j].replace("Similar","S");
+          l = l.replace("Dissimilar","DS");
+          indieLabel.push(l);
+          indieClusterPair.push(reqJson.ClusterPairNumeric[i+j]);
+        }
+        pieData.push(indiPie);
+        labelData.push(indieLabel);
+        clusterPair.push(indieClusterPair);
+      }
+      console.log(pieData);
+      init_DoughnutChartData(pieData,labelData,vc,color);
+    }
+    
+  window.onload = startsome();
+
+    </script>
+  </body>
+</html>

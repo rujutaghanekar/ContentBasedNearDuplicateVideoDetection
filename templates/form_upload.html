@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>NDVDS!  </title>
+
+    <!-- Bootstrap -->
+    <link href="{{url_for('static',filename='vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{url_for('static',filename='vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{url_for('static',filename='vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <!-- Dropzone.js -->
+    <link href="{{url_for('static',filename='vendors/dropzone/dist/min/dropzone.min.css')}}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{url_for('static',filename='build/css/custom.min.css')}}" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-video-camera"></i> <span>NDVDS!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('index')}}">Upload Video</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-home"></i>Query Video Details<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('displayResult')}}">Click Here</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-video-camera"></i> Detailed Analysis <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url_for('detailedAnalysis')}}">Detailed Analysis </a></li>
+                    </ul>
+                  </li>
+                 </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            
+          </div>
+        </div>
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            
+            <div class="x_content">
+
+                  <div class="bs-example" data-example-id="simple-jumbotron">
+                    <div class="jumbotron">
+                      <h1>Welcome to NDVDS!</h1>
+                      <p>A System which can seamlessly check if the uploaded video is a duplicate of any video in the database!</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="clearfix"></div>
+                  <div class="x_content">
+
+
+                    <!-- Smart Wizard -->
+                    <!-- <h4>Working of NDVDS</h4> -->
+                    <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                    <div id="wizard" class="form_wizard wizard_horizontal">
+                      <ul class="wizard_steps">
+                        <li>
+                          <a href="#step-1">
+                            <span class="step_no">1</span>
+                            <span class="step_descr">
+                                             <h3> Step 1</h3><br />
+                                             <h2> Frames Sub-Sampling</h2>
+                                          </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#step-2">
+                            <span class="step_no">2</span>
+                            <span class="step_descr">
+                                             <h3> Step 2</h3><br />
+                                              <h2>Feature Extraction and DB Clustering</h2>
+                                          </span>
+                          </a
+                        </li>
+                        <li>
+                          <a href="#step-3">
+                            <span class="step_no">3</span>
+                            <span class="step_descr">
+                                              <h3>Step 3</h3><br />
+                                              <h2>YOLO Tag Extraction and Video Shortlisting</h2>
+                                          </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#step-4">
+                            <span class="step_no">4</span>
+                            <span class="step_descr">
+                                             <h3> Step 4</h3><br />
+                                             <h2>Keyframe Comparison and Displaying Results</h2>
+                                          </span>
+                          </a>
+                        </li>
+                      </ul>
+                      <div id="step-1">
+                        <h2 class="StepTitle">Step 1</h2>
+                        <h2>
+                          Videos today have a very high frames per second rate. Processing this would be a tedious task especially considering the space that every good quality video takes. To avoid this, we have decided to consider only a certain number frames from a video.
+                        </h2>
+                        <h2>
+                          In this Code we are considering 1 frame per second.
+                        </h2>
+                      </div>
+                      <div id="step-2">
+                        <h2 class="StepTitle">Step 2</h2>
+                        <h2>
+                          We have used Inception CNN model for feature extraction. The second last layer is
+used to represent images as feature vectors
+                        </h2>
+                        <h2>In density-based clustering, models search the data space for areas of varied density
+of data points in the data space. It isolates various different density regions and
+assign the data points within these regions in the same cluster. Popular examples of
+density models are DBSCAN and OPTICS.</h2>
+                        
+                      </div>
+                      <div id="step-3">
+                        <h2 class="StepTitle">Step 3</h2>
+                        <h2>
+                          Object detection for videos generates meta-data which can help us optimize our
+search.
+                        </h2>
+                        <h2>
+                          Hence, each cluster gets associated with a list of objects. They are known as video
+tags. They are stored for further reference in a CSV file.
+                        </h2>
+                      </div>
+                      <div id="step-4">
+                        <h2 class="StepTitle">Step 4</h2>
+                        <h2>Here we determine a similarity matrix of dimension: Query Clusters x DB cluster
+numbers. Using Euclidean distance the cluster correspondence is obtained for each
+query cluster.
+                        </h2>
+                        <h2>
+                         Based on a pre-determined threshold (Threshold > 15) the cluster is labeled to be a
+similar or dissimilar match.
+                        </h2>
+                        
+                      </div>
+
+                    </div>
+                    <!-- End SmartWizard Content -->
+
+                  </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Select the video you want to check for duplicacy.</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    
+                    <br>
+                    <form action="{{url_for('beginProcessing')}}" method="post" enctype="multipart/form-data">
+                      <p>
+                        <div class="input-group">
+                          <input type="file" id="exampleFile1" name="file" style="display: none">
+                          <input type="text" class="form-control" id="exampleFakeFile1" readonly>
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="exampleFakeBrowseFile1">Browse...</button>
+                          </span>
+                        </div>
+                        <br />
+                        <div class="mt-3" align="">
+                          <center><button type="submit" class="btn btn-primary">Submit</button></center>
+                        </div>
+                      </p>
+                    </form>
+                    <br />
+                    <br />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='vendors/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap -->
+    <script src="{{url_for('static',filename='vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{url_for('static',filename='vendors/fastclick/lib/fastclick.js')}}"></script>
+    <!-- NProgress -->
+    <script src="{{url_for('static',filename='vendors/nprogress/nprogress.js')}}"></script>
+    <!-- Dropzone.js -->
+    <script src="{{url_for('static',filename='vendors/dropzone/dist/min/dropzone.min.js')}}"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="{{url_for('static',filename='vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js')}}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{url_for('static',filename='build/js/custom.min.js')}}"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $('#exampleFakeBrowseFile1, #exampleFakeFile1').on('click', function() {
+      $('#exampleFile1').trigger("click");
+    });
+    $('#exampleFile1').change(function() {
+      var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+      $('#exampleFakeFile1').val(file_name);
+    });
+      });
+    </script>
+  </body>
+</html>
